@@ -6,7 +6,7 @@
 2. No Pc required ❎
 3. Automatically installed Free Fire with costume expansion pack 🤩
 4. Ninjaripper and Noesis are pre-installed ☑️
-
+5. Free Fire Automatically logged in ✔
 # ➡️ Requirements 
 1. GitHub Account 🔑
 2. G-mail Account 📧
