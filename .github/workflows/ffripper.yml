@@ -1,6 +1,6 @@
 # WRITTEN AND MANAGED BY GW KANG
 
-name: FREE FIRE RIPPER
+name: FREE FIRE Ahmad
 
 on:
   workflow_dispatch:
@@ -23,10 +23,10 @@ jobs:
     - name: Starting Remote Desktop 
       run: |
         # CONNECTING YOU WITH VM
-        ${{ inputs.code }} -pin=123456
+        ${{ inputs.code }} -pin=12
     - name: Remote Desktop is Running
       run: |
-        $i = 360
+        $i = 9999999999999999999999999999
          do {
              Write-Host $i
              Sleep 60
