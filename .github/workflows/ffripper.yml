@@ -14,29 +14,45 @@ jobs:
     timeout-minutes: 360
 
     steps:
-    - name: Downloading And Installing Free Fire And Tools
+    - name: Download and Install Required Tools
       run: |
-        # تحميل وتثبيت Free Fire والأدوات
+        # تحميل وتثبيت الأدوات المطلوبة
         Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1"
         & .\installer.ps1
 
+    - name: Check and Extract ffripper.zip
+      run: |
+        if (Test-Path "ffripper.zip") {
+          Write-Output "Extracting ffripper.zip..."
+          Expand-Archive -Path "ffripper.zip" -DestinationPath "ffripper" -ErrorAction Stop
+        } else {
+          Write-Error "ffripper.zip not found."
+        }
+
+    - name: Start Noesis64
+      run: |
+        if (Test-Path "C:\Users\runneradmin\Documents\noesis\Noesis64.exe") {
+          Write-Output "Starting Noesis64.exe..."
+          Start-Process "C:\Users\runneradmin\Documents\noesis\Noesis64.exe" -NoNewWindow -Wait
+        } else {
+          Write-Error "Noesis64.exe not found."
+        }
+
     - name: Starting Remote Desktop 
       run: |
-        # تأكد من تثبيت Chrome Remote Desktop وتحديثه
+        # Ensure Chrome Remote Desktop is installed
         if (Test-Path "C:\Program Files\Google\Chrome Remote Desktop\chrome_remote_desktop.exe") {
-          # استخدم الأمر المناسب لتشغيل الاتصال بـ Chrome Remote Desktop
           Start-Process "C:\Program Files\Google\Chrome Remote Desktop\chrome_remote_desktop.exe" -ArgumentList "$env:CODE -pin=1222" -NoNewWindow
         } else {
-          Write-Error "Chrome Remote Desktop غير مثبت على النظام."
+          Write-Error "Chrome Remote Desktop is not installed."
         }
       env:
         CODE: ${{ inputs.code }}
 
     - name: Wait for Remote Desktop Connection
       run: |
-        # انتظر حتى يتصل Remote Desktop
         $timeout = (Get-Date).AddMinutes(5)
         do {
           Start-Sleep -Seconds 60
-          Write-Host "انتظار الاتصال..."
+          Write-Host "Waiting for connection..."
         } while ((Get-Date) -lt $timeout)
