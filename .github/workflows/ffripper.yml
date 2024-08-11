@@ -1,5 +1,3 @@
-# WRITTEN AND MANAGED BY GW KANG
-
 name: FREE FIRE AHMD
 
 on:
@@ -18,17 +16,27 @@ jobs:
     steps:
     - name: Downloading And Installing Free Fire And Tools
       run: |
-        # WAIT FOR 3-4 MINUTES 
-        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1" && ./installer.ps1
+        # تحميل وتثبيت Free Fire والأدوات
+        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1"
+        & .\installer.ps1
+
     - name: Starting Remote Desktop 
       run: |
-        # CONNECTING YOU WITH VM
-        ${{ inputs.code }} -pin=1222
-    - name: Remote Desktop is Running
+        # تأكد من تثبيت Chrome Remote Desktop وتحديثه
+        if (Test-Path "C:\Program Files\Google\Chrome Remote Desktop\chrome_remote_desktop.exe") {
+          # استخدم الأمر المناسب لتشغيل الاتصال بـ Chrome Remote Desktop
+          Start-Process "C:\Program Files\Google\Chrome Remote Desktop\chrome_remote_desktop.exe" -ArgumentList "$env:CODE -pin=1222" -NoNewWindow
+        } else {
+          Write-Error "Chrome Remote Desktop غير مثبت على النظام."
+        }
+      env:
+        CODE: ${{ inputs.code }}
+
+    - name: Wait for Remote Desktop Connection
       run: |
-        $i = 9999999999999998999998888888899999
-         do {
-             Write-Host $i
-             Sleep 60
-             $i--
-        } while ($i -gt 0)
+        # انتظر حتى يتصل Remote Desktop
+        $timeout = (Get-Date).AddMinutes(5)
+        do {
+          Start-Sleep -Seconds 60
+          Write-Host "انتظار الاتصال..."
+        } while ((Get-Date) -lt $timeout)
