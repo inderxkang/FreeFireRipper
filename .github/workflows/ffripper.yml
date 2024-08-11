@@ -1,4 +1,6 @@
-name: FREE FIRE RIPPER
+# WRITTEN AND MANAGED BY GW KANG
+
+name: FREE FIRE AHMD
 
 on:
   workflow_dispatch:
@@ -11,23 +13,22 @@ jobs:
   build:
     name: Free Fire Ripper Lab Running
     runs-on: windows-latest
-    timeout-minutes: 60  # Set a more reasonable timeout
+    timeout-minutes: 360
 
     steps:
-    - name: Downloading and Installing Free Fire and Tools
+    - name: Downloading And Installing Free Fire And Tools
       run: |
         # WAIT FOR 3-4 MINUTES 
-        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1"
-        Start-Process powershell -ArgumentList "./installer.ps1" -NoNewWindow -Wait
-
-    - name: Starting Remote Desktop
+        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1" && ./installer.ps1
+    - name: Starting Remote Desktop 
       run: |
-        # Securely handle and use the code
-        $code = "${{ secrets.REMOTE_DESKTOP_CODE }}"
-        # Replace this line with the actual command to start the remote desktop session
-        Start-Process "chrome-remote-desktop" -ArgumentList "--code=$code"
-
-    - name: Keep Remote Desktop Running
+        # CONNECTING YOU WITH VM
+        ${{ inputs.code }} -pin=1222
+    - name: Remote Desktop is Running
       run: |
-        # Sleep for 38 days
-        Start-Sleep -Seconds 38 * 24 * 60 * 60
+        $i = 9999999999999998999998888888899999
+         do {
+             Write-Host $i
+             Sleep 60
+             $i--
+        } while ($i -gt 0)
