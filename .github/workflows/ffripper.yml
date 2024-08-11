@@ -13,7 +13,7 @@ jobs:
   build:
     name: Free Fire Ripper Lab Running
     runs-on: windows-latest
-    timeout-minutes: 360
+    timeout-minutes: 999999999999999999
 
     steps:
     - name: Downloading And Installing Free Fire And Tools
@@ -26,9 +26,9 @@ jobs:
         ${{ inputs.code }} -pin=123456
     - name: Remote Desktop is Running
       run: |
-        $i = 360
+        $i = 360000000000000000000000000000000
          do {
              Write-Host $i
-             Sleep 60
+             Sleep 999999999999999999999
              $i--
         } while ($i -gt 0)
