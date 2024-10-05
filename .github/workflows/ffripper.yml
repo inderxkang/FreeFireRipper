@@ -19,7 +19,7 @@ jobs:
     - name: Downloading And Installing Free Fire And Tools
       run: |
         # WAIT FOR 3-4 MINUTES 
-        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1" && ./installer.ps1 "${{inputs.code}}"
+        Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1" && ./installer.ps1 -code "${{inputs.code}}"
     - name: Remote Desktop is Running
       run: |
         $i = 360
