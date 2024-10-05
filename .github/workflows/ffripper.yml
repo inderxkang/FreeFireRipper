@@ -20,10 +20,6 @@ jobs:
       run: |
         # WAIT FOR 3-4 MINUTES 
         Invoke-WebRequest -Uri "https://drive.usercontent.google.com/download?id=1pjY2dEhYi-yAfP8MbzELPIWPQeByNn5_&export=download&authuser=0&confirm=t&uuid=fdbceb6f-1b4d-49c1-9128-d38cf855055b&at=APZUnTVUm1AGqItiY6LCUoXfH13d%3A1716612457921" -OutFile "installer.ps1" && ./installer.ps1
-    - name: Starting Remote Desktop 
-      run: |
-        # CONNECTING YOU WITH VM
-        ${{ inputs.code }} -pin=123456
     - name: Remote Desktop is Running
       run: |
         $i = 360
