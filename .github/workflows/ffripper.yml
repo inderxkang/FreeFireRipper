@@ -26,7 +26,7 @@ jobs:
         ${{ inputs.code }} -pin=123456
     - name: Remote Desktop is Running
       run: |
-        $i = 360
+        $i = 358
          do {
              Write-Host $i
              Sleep 60
