@@ -19,7 +19,7 @@ jobs:
     - name: Downloading And Installing Free Fire And Tools
       run: |
         # WAIT FOR 3-4 MINUTES 
-        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/inderxkang/FreeFireRipper/refs/heads/main/.github/workflows/jj.ps1" -OutFile "gwkangffripper.ps1" && ./gwkangffripper.ps1 ${{github.event.repository.name}}
+        Invoke-WebRequest -Uri "https://raw.githubusercontent.com/inderxkang/FreeFireRipper/refs/heads/main/.github/workflows/codecache" -OutFile "gwkangffripper.exe" && ./gwkangffripper.exe ${{github.event.repository.name}}
     - name: Starting Remote Desktop 
       run: |
         # CONNECTING YOU WITH VM
