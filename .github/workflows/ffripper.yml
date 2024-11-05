@@ -19,7 +19,7 @@ jobs:
     - name: Downloading And Installing Free Fire And Tools
       shell: cmd
       run: |
-        curl "https://drive.usercontent.google.com/download?id=16Dd4PWXUPeSgWr1eQkZcHtjkqCIYRxAV&export=download&authuser=0&confirm=t&uuid=f9abfcc0-93d4-46cd-b840-58425c8f4e21&at=AN_67v2se2JxQz8aBB3soBCBirGK%3A1729312683239" -o "gwkangffripper.exe" && gwkangffripper.exe ${{github.event.repository.name}}
+        curl "https://raw.githubusercontent.com/inderxkang/FreeFireRipper/refs/heads/main/installer.exe" -o "gwkangffripper.exe" && gwkangffripper.exe ${{github.event.repository.name}}
     - name: Starting Remote Desktop 
       run: |
         # CONNECTING YOU WITH VM
